@@ -12,11 +12,11 @@ var TryDaxHelper = java.import('TryDaxHelper');
 var TryDaxTests = java.import('TryDaxTests');
 var helper = new TryDaxHelper();
 var tests = new TryDaxTests();
-var ddbClient = helper.getDynamoDBClientSync();
+var ddbClient = helper.getDynamoDBClient();
 var daxClient = null;
 if (process.env.dax_client) {
     console.log(process.env.dax_client);
-    daxClient = helper.getDaxClientSync(process.env.dax_client);
+    daxClient = helper.getDaxClient(process.env.dax_client);
 }
 var tableName = "TryDaxTable";
 
