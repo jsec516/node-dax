@@ -1,5 +1,11 @@
 var java = require("java");
-java.classpath.push('./lib/aws-java-sdk-1.11.150.jar')
+java.classpath.push('./lib/aws-java-sdk-1.11.150.jar');
+java.classpath.push('./lib/org.apache.commons.logging-1.1.1.jar');
+java.classpath.push('./lib/aws-java-sdk/lib/aws-java-sdk-1.11.147.jar');
+java.classpath.push('./lib/com.fasterxml.jackson.core.jar');
+java.classpath.push('./lib/com.fasterxml.jackson.databind.jar');
+java.classpath.push('./lib/jackson-annotations.jar');
+
 java.classpath.push('./lib/jfiles');
 var DynamoDB = java.import('com.amazonaws.services.dynamodbv2.document.DynamoDB');
 var TryDaxHelper = java.import('TryDaxHelper');
