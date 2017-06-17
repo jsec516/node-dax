@@ -10,8 +10,8 @@ java.classpath.push('./lib/jfiles');
 var DynamoDB = java.import('com.amazonaws.services.dynamodbv2.document.DynamoDB');
 var TryDaxHelper = java.import('TryDaxHelper');
 var TryDaxTests = java.import('TryDaxTests');
-var helper = new TryDaxHelper();
-var tests = new TryDaxTests();
+var helper = java.newInstanceSync('TryDaxHelper');
+var tests = java.newInstanceSync('TryDaxTests');
 var ddbClient = helper.getDynamoDBClient();
 var daxClient = null;
 if (process.env.dax_client) {
