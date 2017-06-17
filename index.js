@@ -1,4 +1,5 @@
 var java = require("java");
+java.classpath.push('./lib/aws-java-sdk-1.11.150/lib/aws-java-sdk-1.11.150.jar')
 java.classpath.push('./lib/jfiles');
 var DynamoDB = java.import('com.amazonaws.services.dynamodbv2.document.DynamoDB');
 var TryDaxHelper = java.import('TryDaxHelper');
