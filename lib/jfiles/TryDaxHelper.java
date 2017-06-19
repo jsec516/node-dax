@@ -17,7 +17,7 @@ import com.amazonaws.util.EC2MetadataUtils;
 
     private static final String region = EC2MetadataUtils.getEC2InstanceRegion();
 
-    DynamoDB getDynamoDBClient() {
+    public DynamoDB getDynamoDBClient() {
         System.out.println("Creating a DynamoDB client");
         AmazonDynamoDB client = AmazonDynamoDBClientBuilder.standard()
                 .withRegion(region)
@@ -25,7 +25,7 @@ import com.amazonaws.util.EC2MetadataUtils;
         return new DynamoDB(client);
      }
 
-    DynamoDB getDaxClient(String daxEndpoint) {
+    public DynamoDB getDaxClient(String daxEndpoint) {
         System.out.println("Creating a DAX client with cluster endpoint " + daxEndpoint);
         AmazonDaxClientBuilder daxClientBuilder = AmazonDaxClientBuilder.standard();
         daxClientBuilder.withRegion(region).withEndpointConfiguration(daxEndpoint);
@@ -33,7 +33,7 @@ import com.amazonaws.util.EC2MetadataUtils;
         return new DynamoDB(client);
      }
 
-     void createTable(String tableName, DynamoDB client) {
+     public void createTable(String tableName, DynamoDB client) {
         Table table = client.getTable(tableName);
         try {
             System.out.println("Attempting to create table; please wait...");
@@ -56,7 +56,7 @@ import com.amazonaws.util.EC2MetadataUtils;
         }
     }
 
-    void writeData(String tableName, DynamoDB client, int pkmax, int skmax) {
+    public void writeData(String tableName, DynamoDB client, int pkmax, int skmax) {
         Table table = client.getTable(tableName);
         System.out.println("Writing data to the table...");
 
@@ -82,7 +82,7 @@ import com.amazonaws.util.EC2MetadataUtils;
         }
     }
 
-    void deleteTable(String tableName, DynamoDB client) {
+    public void deleteTable(String tableName, DynamoDB client) {
         Table table = client.getTable(tableName);
         try {
             System.out.println("\nAttempting to delete table; please wait...");

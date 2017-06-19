@@ -11,7 +11,7 @@ import com.amazonaws.services.dynamodbv2.document.spec.QuerySpec;
 
 public class TryDaxTests {
 
-    void getItemTest(String tableName, DynamoDB client, int pk, int sk, int iterations) {
+    public void getItemTest(String tableName, DynamoDB client, int pk, int sk, int iterations) {
         long startTime, endTime;
         System.out.println("GetItem test - partition key " + pk + " and sort keys 1-" + sk);
         Table table = client.getTable(tableName);
@@ -33,7 +33,7 @@ public class TryDaxTests {
         }
     }
 
-    void queryTest(String tableName, DynamoDB client, int pk, int sk1, int sk2, int iterations) {
+    public void queryTest(String tableName, DynamoDB client, int pk, int sk1, int sk2, int iterations) {
         long startTime, endTime;
         System.out.println("Query test - partition key " + pk + " and sort keys between " + sk1 + " and " + sk2);
         Table table = client.getTable(tableName);
@@ -65,7 +65,7 @@ public class TryDaxTests {
         }
     }
 
-    void scanTest(String tableName, DynamoDB client, int iterations) {
+    public void scanTest(String tableName, DynamoDB client, int iterations) {
         long startTime, endTime;
         System.out.println("Scan test - all items in the table");
         Table table = client.getTable(tableName);
