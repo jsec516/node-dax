@@ -34,5 +34,24 @@ console.log("Creating table...");
 helper.createTable(tableName, ddbClient);
 console.log("Populating table...");
 helper.writeDataSync(tableName, ddbClient, 10, 10);
+var testClient = null;
+if (daxClient != null) {
+    testClient = daxClient;
+} else {
+    testClient = ddbClient;
+}
 
-console.log('done with processing ...');
+console.log("Running GetItem, Scan, and Query tests...");
+console.log("First iteration of each test will result in cache misses");
+console.log("Next iterations are cache hits\n");
+
+// GetItem
+tests.getItemTestSync(tableName, testClient, 1, 10, 5);
+
+// Query
+tests.queryTestSync(tableName, testClient, 5, 2, 9, 5);
+
+// Scan
+tests.scanTestSync(tableName, testClient, 5);
+
+helper.deleteTableSync(tableName, ddbClient);
